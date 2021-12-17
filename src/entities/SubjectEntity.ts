@@ -8,6 +8,6 @@ export default class Subject {
     @Column()
         name: string;
 
-    @Column('period_id')
-        periodId: string;
+    // @Column('period_id')
+    //     periodId: string;
 }

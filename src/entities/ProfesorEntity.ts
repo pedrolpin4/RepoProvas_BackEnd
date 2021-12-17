@@ -8,6 +8,6 @@ export default class Profesor {
     @Column()
         name: string;
 
-    @Column('discipline_id')
-        subjectId: string;
+    // @Column('discipline_id')
+    //     subjectId: string;
 }

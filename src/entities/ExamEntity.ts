@@ -11,9 +11,9 @@ export default class Exam {
     @Column()
         link: string;
 
-    @Column('profesor_id')
-        profesorId: string;
+    // @Column('professor_id')
+    //     profesorId: string;
 
-    @Column('category_id')
-        categoryId: string;
+    // @Column('category_id')
+    //     categoryId: string;
 }
