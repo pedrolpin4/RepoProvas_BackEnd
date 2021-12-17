@@ -8,6 +8,9 @@ export default class Exam {
     @Column()
         name: string;
 
+    @Column()
+        link: string;
+
     @Column('profesor_id')
         profesorId: string;
 
