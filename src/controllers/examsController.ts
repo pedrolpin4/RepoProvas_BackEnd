@@ -1,21 +1,23 @@
 import { NextFunction, Request, Response } from 'express';
-import ValidationError from '../errors/ValidationError';
+import * as examsService from '../services/examsService';
 
-const getExamsInfo = (req: Request, res: Response, next: NextFunction) => {
-    const { forms } = req.body;
-
+const getExamsInfo = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        if (forms) throw new ValidationError('You need to send a body with the following pattern: {name, link, category: {}, profesor: {}}');
+        const choices = await examsService.examsChoices();
+        if (!choices) return res.sendStatus(204);
 
-        return res.send(forms);
+        return res.send(choices);
     } catch (error) {
         return next(error);
     }
 };
 
-const postExam = (req: Request, res: Response, next: NextFunction) => {
+const postExam = async (req: Request, res: Response, next: NextFunction) => {
+    const { forms } = req.body;
+
     try {
-        return res.sendStatus(201);
+        const choices = await examsService.sendExam(forms);
+        return res.status(201).send(choices);
     } catch (error) {
         return next(error);
     }
