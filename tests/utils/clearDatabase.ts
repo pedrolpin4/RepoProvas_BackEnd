@@ -4,13 +4,14 @@ import Subject from '../../src/entities/SubjectEntity';
 import Profesor from '../../src/entities/ProfesorEntity';
 import Period from '../../src/entities/PeriodEntity';
 import Exam from '../../src/entities/ExamEntity';
+import { Created } from './Created';
 
-const clearDatabase = async () => {
-    await getRepository(Exam).delete({});
-    await getRepository(Profesor).delete({});
-    await getRepository(Subject).delete({});
-    await getRepository(Category).delete({});
-    await getRepository(Period).delete({});
+const clearDatabase = async (created: Created) => {
+    await getRepository(Exam).delete({ id: created.exam.id });
+    await getRepository(Profesor).delete({ id: created.profesor.id });
+    await getRepository(Subject).delete({ id: created.subject.id });
+    await getRepository(Category).delete({ id: created.category.id });
+    await getRepository(Period).delete({ id: created.period.id });
 };
 
 export default clearDatabase;

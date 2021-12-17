@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany,
+} from 'typeorm';
+import { DBSubject } from '../interfaces/Subject';
+import Subject from './SubjectEntity';
 
 @Entity('periods')
 export default class Period {
@@ -7,4 +14,7 @@ export default class Period {
 
     @Column()
         name: string;
+
+    @OneToMany(() => Subject, (subjects: Subject) => subjects.period)
+        subjects: DBSubject[];
 }

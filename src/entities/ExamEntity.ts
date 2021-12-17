@@ -2,9 +2,11 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    OneToOne,
+    ManyToOne,
     JoinColumn,
 } from 'typeorm';
+import { DBCategory } from '../interfaces/Category';
+import { DBProfesor } from '../interfaces/Profesor';
 import Category from './CategoryEntity';
 import Profesor from './ProfesorEntity';
 
@@ -19,11 +21,17 @@ export default class Exam {
     @Column()
         link: string;
 
-    @OneToOne(() => Category, { eager: true })
-    @JoinColumn({ name: 'category_id' })
-        category: Category;
+    @Column({ name: 'professor_id' })
+        profesorId: number;
 
-    @OneToOne(() => Profesor, { eager: true })
-    @JoinColumn({ name: 'professor_id' })
-        profesor: Profesor;
+    @Column({ name: 'category_id' })
+        categoryId: number;
+
+    @ManyToOne(() => Category, (category: Category) => category.exams, { eager: true })
+    @JoinColumn(({ name: 'category_id' }))
+        category: DBCategory;
+
+    @ManyToOne(() => Profesor, (profesor: Profesor) => profesor.exams, { eager: true })
+    @JoinColumn(({ name: 'professor_id' }))
+        profesor: DBProfesor;
 }

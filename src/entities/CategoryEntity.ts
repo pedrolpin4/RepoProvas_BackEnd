@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany,
+} from 'typeorm';
+import { DBExam } from '../interfaces/Exam';
+import Exam from './ExamEntity';
 
 @Entity('categories')
 export default class Category {
@@ -7,4 +14,7 @@ export default class Category {
 
     @Column()
         name: string;
+
+    @OneToMany(() => Exam, (exams: Exam) => exams.category)
+        exams: DBExam[];
 }

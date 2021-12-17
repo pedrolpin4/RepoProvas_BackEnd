@@ -2,10 +2,13 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    OneToOne,
+    OneToMany,
     JoinColumn,
+    ManyToOne,
 } from 'typeorm';
+import { DBPeriod } from '../interfaces/Period';
 import Period from './PeriodEntity';
+import Profesor from './ProfesorEntity';
 
 @Entity('subjects')
 export default class Subject {
@@ -18,7 +21,10 @@ export default class Subject {
     @Column({ name: 'period_id' })
         periodId: number;
 
-    @OneToOne(() => Period, { eager: true })
+    @OneToMany(() => Profesor, (profesor: Profesor) => profesor.subject)
+        profesors: Profesor[];
+
+    @ManyToOne(() => Period, (period: Period) => period.subjects, { eager: true })
     @JoinColumn({ name: 'period_id' })
-        period: Period;
+        period: DBPeriod;
 }
