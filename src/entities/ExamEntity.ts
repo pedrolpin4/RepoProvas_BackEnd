@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToOne,
+    JoinColumn,
+} from 'typeorm';
+import Category from './CategoryEntity';
+import Profesor from './ProfesorEntity';
 
 @Entity('exams')
 export default class Exam {
@@ -11,9 +19,11 @@ export default class Exam {
     @Column()
         link: string;
 
-    // @Column('professor_id')
-    //     profesorId: string;
+    @OneToOne(() => Category, { eager: true })
+    @JoinColumn({ name: 'category_id' })
+        category: Category;
 
-    // @Column('category_id')
-    //     categoryId: string;
+    @OneToOne(() => Profesor, { eager: true })
+    @JoinColumn({ name: 'professor_id' })
+        profesor: Profesor;
 }

@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToOne,
+    JoinColumn,
+} from 'typeorm';
+import Subject from './SubjectEntity';
 
 @Entity('profesors')
 export default class Profesor {
@@ -8,6 +15,7 @@ export default class Profesor {
     @Column()
         name: string;
 
-    // @Column('discipline_id')
-    //     subjectId: string;
+    @OneToOne(() => Subject, { eager: true })
+    @JoinColumn({ name: 'discipline_id' })
+        subject: Subject;
 }
