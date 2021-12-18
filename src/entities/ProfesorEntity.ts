@@ -38,6 +38,7 @@ export default class Profesor {
                 {
                     id: exam.id,
                     name: exam.name,
+                    link: exam.link,
                     categoryId: exam.categoryId,
                     subject: this.subject.name,
                 }
