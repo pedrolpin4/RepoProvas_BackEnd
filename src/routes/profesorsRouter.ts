@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import * as profesorsController from '../controllers/profesorsController';
+import getProfesorsExams from '../controllers/profesorsController';
 
 const router = Router();
 
-router.get('', profesorsController.getProfesorsExam);
+router.get('', getProfesorsExams);
 
 export default router;

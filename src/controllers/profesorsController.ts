@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import * as profesorServices from '../services/profesorsService';
+import handleProfesorsObject from '../services/profesorsService';
 
-const getProfesorsExam = async (req: Request, res: Response, next: NextFunction) => {
+const getProfesorsExams = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const result = await profesorServices.handleProfesorsObject();
+        const result = await handleProfesorsObject();
 
         if (!result.profesors.length) {
             return res.status(204).send('There are no profesors registered on our database');
@@ -15,9 +15,4 @@ const getProfesorsExam = async (req: Request, res: Response, next: NextFunction)
     }
 };
 
-const filler = () => {};
-
-export {
-    getProfesorsExam,
-    filler,
-};
+export default getProfesorsExams;

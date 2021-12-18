@@ -10,9 +10,4 @@ const handleProfesorsObject = async () => {
     return { categories, profesors };
 };
 
-const filler = () => {};
-
-export {
-    handleProfesorsObject,
-    filler,
-};
+export default handleProfesorsObject;
