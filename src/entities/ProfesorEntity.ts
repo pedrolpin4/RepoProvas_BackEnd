@@ -26,7 +26,7 @@ export default class Profesor {
     @JoinColumn({ name: 'discipline_id' })
         subject: DBSubject;
 
-    @OneToMany(() => Exam, (exams: Exam) => exams.profesor, { eager: true })
+    @OneToMany(() => Exam, (exams: Exam) => exams.profesor)
         exams: DBExam[];
 
     profesorsPage() {
@@ -40,7 +40,7 @@ export default class Profesor {
                     name: exam.name,
                     link: exam.link,
                     categoryId: exam.categoryId,
-                    subject: this.subject.name,
+                    subject: exam.subject.name,
                 }
             )),
         };

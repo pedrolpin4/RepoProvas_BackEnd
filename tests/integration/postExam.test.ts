@@ -6,7 +6,7 @@ import clearDatabase from "../utils/clearDatabase";
 import faker from 'faker'
 import { Created } from "../utils/Created";
 
-describe ('GET /exams', () => {
+describe ('POST /exams', () => {
     let created: Created;
     let examUrl: string;
 
@@ -32,6 +32,7 @@ describe ('GET /exams', () => {
             name: faker.name.firstName(),
             link: faker.internet.url(),
             categoryId: -1,
+            subjectId: -1,
             profesorId: created.profesor.id,
         };
         
@@ -45,6 +46,7 @@ describe ('GET /exams', () => {
             name: faker.name.firstName(),
             link: faker.internet.url(),
             categoryId: created.category.id,
+            subjectId: created.subject.id,
             profesorId: -1,
         };
 
@@ -58,6 +60,7 @@ describe ('GET /exams', () => {
             name: faker.name.firstName(),
             link: created.exam.link,
             categoryId: created.category.id,
+            subjectId: created.subject.id,
             profesorId: created.profesor.id,
         };
 
@@ -73,6 +76,7 @@ describe ('GET /exams', () => {
             name: faker.name.firstName(),
             link: examUrl,
             categoryId: created.category.id,
+            subjectId: created.subject.id,
             profesorId: created.profesor.id,
         };
 

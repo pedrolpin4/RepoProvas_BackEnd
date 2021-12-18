@@ -25,6 +25,7 @@ const createExamChoices = async () => {
     await getRepository(Exam).insert({
         name: examName,
         link: examLink,
+        subjectId: subject.id,
         categoryId: category.id,
         profesorId: profesor.id,
     });

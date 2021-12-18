@@ -4,7 +4,9 @@ import Profesor from '../entities/ProfesorEntity';
 
 const handleProfesorsObject = async () => {
     const categories = await getRepository(Category).find();
-    const teachers = await getRepository(Profesor).find();
+    const teachers = await getRepository(Profesor).find({
+        relations: ['exams'],
+    });
     const profesors = teachers.map((teacher) => teacher.profesorsPage());
 
     return { categories, profesors };
