@@ -1,5 +1,6 @@
 *.test.ts
 *.test.js
 server.ts
+rascunho.ts
 serverErrorMiddleware.ts
 dist

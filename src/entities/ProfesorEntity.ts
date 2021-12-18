@@ -26,6 +26,22 @@ export default class Profesor {
     @JoinColumn({ name: 'discipline_id' })
         subject: DBSubject;
 
-    @OneToMany(() => Exam, (exams: Exam) => exams.profesor)
+    @OneToMany(() => Exam, (exams: Exam) => exams.profesor, { eager: true })
         exams: DBExam[];
+
+    profesorsPage() {
+        return {
+            id: this.id,
+            name: this.name,
+            quantity: this.exams.length,
+            exams: this.exams.map((exam) => (
+                {
+                    id: exam.id,
+                    name: exam.name,
+                    categoryId: exam.categoryId,
+                    subject: this.subject.name,
+                }
+            )),
+        };
+    }
 }

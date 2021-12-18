@@ -8,6 +8,7 @@ import { Created } from "../utils/Created";
 
 describe ('GET /exams', () => {
     let created: Created;
+    let examUrl: string;
 
     beforeAll(async () => {
         await init();
@@ -66,9 +67,11 @@ describe ('GET /exams', () => {
     })
 
     it("Sould return status 201 if it satisfies all the pattern above", async () => {
+        examUrl = faker.internet.url();
+
         const body = {
             name: faker.name.firstName(),
-            link: faker.internet.url(),
+            link: examUrl,
             categoryId: created.category.id,
             profesorId: created.profesor.id,
         };
@@ -79,7 +82,7 @@ describe ('GET /exams', () => {
     })
 
     afterAll(async () => {
-        await clearDatabase(created);
+        await clearDatabase(created, examUrl);
         await getConnection().close();
     });
 })

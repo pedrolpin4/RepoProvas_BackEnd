@@ -5,7 +5,7 @@ import createExamChoices from "../factories/createExamChoices";
 import clearDatabase from "../utils/clearDatabase";
 import { Created } from "../utils/Created";
 
-describe ('GET /exams', () => {
+describe ('GET /profesors', () => {
     let created: Created;
 
     beforeAll(async () => {
@@ -19,19 +19,18 @@ describe ('GET /exams', () => {
         await clearDatabase(created, '');
     })
 
-    it("Sould return an object's array and status 200 if there is data on the database", async () => {
-        const result = await supertest(app).get('/exams');
+    it("Sould return an object's array and status 200 if there are profesors on the database", async () => {
+        const result = await supertest(app).get('/profesors');
 
         expect(result.status).toEqual(200);
         expect(result.body).toEqual({
             categories: expect.any(Array),
-            subjects: expect.any(Array),
             profesors: expect.any(Array),
         });
     })
 
-    it("Sould return an object's array and status 204 if there is no data on the database", async () => {
-        const result = await supertest(app).get('/exams');
+    it("Sould return an object's array and status 204 if there is no profesor on the database", async () => {
+        const result = await supertest(app).get('/profesors');
 
         expect(result.status).toEqual(204);
     })
