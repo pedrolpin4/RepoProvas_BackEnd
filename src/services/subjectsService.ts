@@ -8,7 +8,7 @@ const handleSubjectsObject = async () => {
         relations: ['exams'],
     });
     const subjects = disciplines.map((subject) => subject.subjectsPage());
-    return { categories, disciplines, subjects };
+    return { categories, subjects };
 };
 
 export default handleSubjectsObject;
