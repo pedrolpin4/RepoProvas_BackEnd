@@ -7,9 +7,10 @@ import {
     ManyToOne,
 } from 'typeorm';
 import { DBPeriod } from '../interfaces/Period';
+import { DBProfesorSubject } from '../interfaces/ProfesorSubject';
 import Exam from './ExamEntity';
 import Period from './PeriodEntity';
-import Profesor from './ProfesorEntity';
+import ProfesorsSubjects from './ProfesorsSubjectsEntity';
 
 @Entity('subjects')
 export default class Subject {
@@ -22,15 +23,18 @@ export default class Subject {
     @Column({ name: 'period_id' })
         periodId: number;
 
-    @OneToMany(() => Profesor, (profesor: Profesor) => profesor.subject)
-        profesors: Profesor[];
-
     @ManyToOne(() => Period, (period: Period) => period.subjects, { eager: true })
     @JoinColumn({ name: 'period_id' })
         period: DBPeriod;
 
     @OneToMany(() => Exam, (exam: Exam) => exam.subject)
         exams: Exam[];
+
+    @OneToMany(
+        () => ProfesorsSubjects,
+        (profesorSubject: ProfesorsSubjects) => profesorSubject.profesor,
+    )
+        profesorSubject: DBProfesorSubject[];
 
     subjectsPage() {
         return {

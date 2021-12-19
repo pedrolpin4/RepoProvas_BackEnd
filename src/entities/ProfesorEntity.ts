@@ -2,14 +2,12 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    ManyToOne,
     OneToMany,
-    JoinColumn,
 } from 'typeorm';
 import { DBExam } from '../interfaces/Exam';
-import { DBSubject } from '../interfaces/Subject';
+import { DBProfesorSubject } from '../interfaces/ProfesorSubject';
 import Exam from './ExamEntity';
-import Subject from './SubjectEntity';
+import ProfesorsSubjects from './ProfesorsSubjectsEntity';
 
 @Entity('professors')
 export default class Profesor {
@@ -19,15 +17,15 @@ export default class Profesor {
     @Column()
         name: string;
 
-    @Column({ name: 'discipline_id' })
-        subjectId: number;
-
-    @ManyToOne(() => Subject, (subject: Subject) => subject.profesors, { eager: true })
-    @JoinColumn({ name: 'discipline_id' })
-        subject: DBSubject;
-
     @OneToMany(() => Exam, (exams: Exam) => exams.profesor)
         exams: DBExam[];
+
+    @OneToMany(
+        () => ProfesorsSubjects,
+        (profesorSubject: ProfesorsSubjects) => profesorSubject.profesor,
+        { eager: true },
+    )
+        profesorSubject: DBProfesorSubject[];
 
     profesorsPage() {
         return {

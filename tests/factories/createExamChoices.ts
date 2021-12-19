@@ -20,7 +20,7 @@ const createExamChoices = async () => {
     const category = await getRepository(Category).findOne({ name: categoryName });
     await getRepository(Subject).insert({ name: subjectName, periodId: period.id });
     const subject = await getRepository(Subject).findOne({ name: subjectName });
-    await getRepository(Profesor).insert({ name: profesorName, subjectId: subject.id });
+    await getRepository(Profesor).insert({ name: profesorName });
     const profesor = await getRepository(Profesor).findOne({ name: profesorName });
     await getRepository(Exam).insert({
         name: examName,
