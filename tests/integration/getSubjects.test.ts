@@ -25,6 +25,7 @@ describe ('GET /subjects', () => {
         expect(result.status).toEqual(200);
         expect(result.body).toEqual({
             categories: expect.any(Array),
+            period: expect.any(Array),
             subjects: expect.any(Array),
         });
     })
