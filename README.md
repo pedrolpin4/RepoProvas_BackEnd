@@ -32,7 +32,7 @@ npm start
 ```
 5. Open the file "database_backup.sql", then copy and paste the script on some database you'll create on your postgres terminal;
 
-6. create an .env.dev file following the .env.example template using the credentials of the database you've created above;
+6. create an .env file following the .env.example template using the credentials of the database you've created above;
 
 7. Run the Back End with
 ```bash
