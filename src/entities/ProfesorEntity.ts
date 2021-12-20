@@ -9,7 +9,11 @@ import { DBProfesorSubject } from '../interfaces/ProfesorSubject';
 import Exam from './ExamEntity';
 import ProfesorsSubjects from './ProfesorsSubjectsEntity';
 
-@Entity('professors')
+@Entity('professors', {
+    orderBy: {
+        name: 'ASC',
+    },
+})
 export default class Profesor {
     @PrimaryGeneratedColumn()
         id: number;

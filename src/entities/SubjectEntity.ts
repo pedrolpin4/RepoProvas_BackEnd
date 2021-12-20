@@ -12,7 +12,11 @@ import Exam from './ExamEntity';
 import Period from './PeriodEntity';
 import ProfesorsSubjects from './ProfesorsSubjectsEntity';
 
-@Entity('subjects')
+@Entity('subjects', {
+    orderBy: {
+        name: 'ASC',
+    },
+})
 export default class Subject {
     @PrimaryGeneratedColumn()
         id: number;
