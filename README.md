@@ -19,27 +19,27 @@ Tell me, don't you hate some college professors that seem to do absolutely nothi
 
 ## How to run?
 
- 1. Clone this repository
+1. Clone this repository
 2. Install dependencies
 ```bash
 npm i
 ```
-3. Run the front-end with
+3. If you want to run my frontend repository too, check it out on https://github.com/pedrolpin4/RepoProvas_React
+
+4. Run the front-end with
 ```bash
 npm start
 ```
-4. Open the file "database_backup.sql", then copy and paste the script on some database you'll create on your postgres terminal;
+5. Open the file "database_backup.sql", then copy and paste the script on some database you'll create on your postgres terminal;
 
-5. create an .env.dev file following the .env.example template using the credentials of the database you've created above;
+6. create an .env.dev file following the .env.example template using the credentials of the database you've created above;
 
-6. Run the Back End with
+7. Run the Back End with
 ```bash
-npm start:dev
+npm run dev
 ```
 
-7. The project will run in your localhost:`${ThePort you have setted}`;
-    
-8. If you want to run my frontend repository too, check it out on https://github.com/pedrolpin4/RepoProvas_React
+8. The project will run in your localhost:`${ThePort you have setted}`;
 
 
 ## Database Architecture
